@@ -23,3 +23,13 @@ export default {
     }
 };
 </script>
+
+<style lang="sass">
+.login-form
+    font-size: 18px
+    &__btn
+        margin-top: 2.8333em
+        text-transform: uppercase
+        font-weight: bold
+        text-align: center  
+</style>
