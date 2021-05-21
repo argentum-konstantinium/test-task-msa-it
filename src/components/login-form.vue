@@ -9,6 +9,7 @@
 import BaseForm from "./base-form.vue";
 import LoginFieldset from "./login-fieldset.vue";
 import BaseFormBtn from "./base-form-btn.vue";
+import api from "../assets/js/api.js";
 export default {
     name: "LoginForm",
     components: {
@@ -32,27 +33,31 @@ export default {
                     value: "",
                     minLength: 5,
                     errorsMessages: {
-                        minLength: 'Длина пароля менее 5 символов'
-                    }
+                        minLength: "Длина пароля менее 5 символов",
+                    },
                 },
             },
             errors: {
                 login: {
-                    errorsState: false,
-                    minLength: {
-                        state: false,
-                        message: "",
-                    },
-                    validation: {
-                        state: false,
-                        message: "",
+                    errorsState: null,
+                    errors: {
+                        minLength: {
+                            state: false,
+                            message: "",
+                        },
+                        validation: {
+                            state: false,
+                            message: "",
+                        },
                     },
                 },
                 password: {
-                    errorsState: false,
-                    minLength: {
-                        state: false,
-                        message: "",
+                    errorsState: null,
+                    errors: {
+                        minLength: {
+                            state: false,
+                            message: "",
+                        },
                     },
                 },
             },
@@ -64,25 +69,38 @@ export default {
                 this.checkFormData("login");
             },
         },
-        'formData.password.value': {
+        "formData.password.value": {
             handler() {
-                this.checkFormData('password');
-            }
-        }
+                this.checkFormData("password");
+            },
+        },
     },
     methods: {
-        submit(event) {
-            if (!this.checkFormData('password') && !this.checkFormData('login')) {
-                alert('ok')
+        submit: async function (event) {
+            const passwordState = this.checkFormData("password");
+            const loginState = this.checkFormData("login");
+            const formData = this.formData;
+            const submitData = this.prepareDate(formData);
+            
+            if (!passwordState && !loginState) {
+                /* response = await fetch("", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: submitData,
+                }); */
+                const response = await api.checkAuthData(submitData);
+                this.processResponse(response);
             } else {
-                alert('notOk');
+                return;
             }
         },
         setFormData(e) {
             if (e.target === "login") {
-                this.formData.login.value = e.value;
+                this.formData.login.value = e.value.trim();
             } else {
-                this.formData.password.value = e.value;
+                this.formData.password.value = e.value.trim();
             }
         },
         checkFormData(target) {
@@ -120,8 +138,8 @@ export default {
             let errors = Object.keys(validateObj);
             let errorsState = false;
             errors.forEach((error) => {
-                if (error in errorsTarget) {
-                    errorsTarget[error].state = validateObj[error];
+                if (error in errorsTarget.errors) {
+                    errorsTarget.errors[error].state = validateObj[error];
                     if (validateObj[error]) {
                         errorsState = true;
                     }
@@ -140,9 +158,9 @@ export default {
             const targetData = this.formData[target];
             let errors = Object.keys(validateObj);
             errors.forEach((error) => {
-                if (error in errorsTarget) {
-                    errorsTarget[error].message =
-                        targetData?.errorsMessages[error];
+                if (error in errorsTarget.errors) {
+                    errorsTarget.errors[error].message =
+                        targetData.errorsMessages[error];
                 } else {
                     throw new Error(`${error} does not exist in errors object`);
                 }
@@ -154,6 +172,20 @@ export default {
             if (!targetData.value.match(targetData.validator)) return true;
 
             return false;
+        },
+        prepareDate(formData) {
+            const formDataKeys = Object.keys(formData);
+            let submitData = {};
+            formDataKeys.forEach((key) => {
+                submitData[key] = formData[key].value;
+            });
+            submitData = JSON.stringify(submitData);
+            return submitData;
+        },
+        processResponse(response) {
+            if (response) {
+                alert('ok')
+            }
         },
     },
 };
@@ -167,4 +199,12 @@ export default {
         text-transform: uppercase
         font-weight: bold
         text-align: center
+@media ( min-width: 600px )
+    .login-form
+        max-width: 550px
+        border-radius: 15px
+        background: #fff
+        margin: 0 auto
+        padding: 30px
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
 </style>
