@@ -1,5 +1,5 @@
 <template>
-    <input class="input" :type="type" :name="name" :placeholder="placeholder">
+    <input class="input"  @input="$emit('input', $event)" :type="type" :name="name" :placeholder="placeholder">
 </template>
 
 
@@ -11,13 +11,19 @@ export default {
         type: {
             type: String, 
             default() {
-                return 'text'
+                return 'text';
+            }
+        },
+        required: {
+            type: Boolean,
+            default() {
+                return false;
             }
         },
         placeholder: {
             type: String,
             default() {
-                return 'Введите свой текст'
+                return 'Введите свой текст';
             }
         }
     }
