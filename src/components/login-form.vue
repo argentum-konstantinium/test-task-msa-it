@@ -9,6 +9,7 @@
 import BaseForm from "./base-form.vue";
 import LoginFieldset from "./login-fieldset.vue";
 import BaseFormBtn from "./base-form-btn.vue";
+import { mapActions } from 'vuex';
 import api from "../assets/js/api.js";
 export default {
     name: "LoginForm",
@@ -76,6 +77,7 @@ export default {
         },
     },
     methods: {
+        ...mapActions(['authorizeUser']),
         submit: async function (event) {
             const passwordState = this.checkFormData("password");
             const loginState = this.checkFormData("login");
@@ -143,7 +145,7 @@ export default {
                     if (validateObj[error]) {
                         errorsState = true;
                     }
-                    if (!validateObj[error] && !errorsState) {
+                    if ((validateObj[error] === false) && (errorsState === false)) {
                         errorsState = false;
                     }
                 } else {
@@ -184,7 +186,7 @@ export default {
         },
         processResponse(response) {
             if (response) {
-                alert('ok')
+                this.authorizeUser(response);
             }
         },
     },

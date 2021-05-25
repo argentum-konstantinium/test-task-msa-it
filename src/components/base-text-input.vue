@@ -33,10 +33,9 @@ export default {
 <style lang="sass">
 .input
     display: block
-    font-size: 1em
+    @include fontCfg(1em, 120%)
     background: #FAFAFA
     border: 2px solid #1E6FB9
     border-radius: 6px
     padding: 0.862em 0.6111em
-    line-height: 120%
 </style>

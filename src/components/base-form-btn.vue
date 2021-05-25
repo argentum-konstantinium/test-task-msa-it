@@ -20,12 +20,11 @@ export default {
 .form
     &__button
         width: 100%
-        font-size: 1em
+        @include fontCfg(1em, 1.2em)
         border-radius: 6px
         background: #1E6FB9
         padding: 1.26em
         color: #fff
-        line-height: 120%
         transition: background 0.2s ease-in
         &:hover
             background: #1053A9

@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import './assets/sass/main.sass'
 import FocusVisible from './assets/js/focus-visible.js'
-
+import './assets/json/orders.json'
 window.focusVisible = new FocusVisible({
     attribute: 'data-focus-visible'
 });

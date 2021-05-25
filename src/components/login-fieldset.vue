@@ -80,12 +80,9 @@ export default {
 <style lang="sass">
 .login-fieldset
     &__headline
-        font-weight: bold
-        font-size: 25px
+        @include fontCfg(25px, 1.16em, bold, 0.012em)
         margin-bottom: 1.8em
         text-align: center
-        letter-spacing: 0.012em
-        line-height: 1.16em
         display: block
         width: 100%
     &__errors-msgs

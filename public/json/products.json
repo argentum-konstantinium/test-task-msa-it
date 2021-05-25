@@ -1,0 +1,61 @@
+[
+    {
+        "id": 1,
+        "packageName": "ULTRA рацион",
+        "packageCalories": "9999 кКал",
+        "deliveries": [
+            {
+                "id": 1,
+                "days": 14,
+                "interval": "8:00 - 10:00"
+            },
+            {
+                "id": 2,
+                "days": 16,
+                "interval": "8:00 - 10:00"
+            },
+            {
+                "id": 3,
+                "days": 18,
+                "interval": "8:00 - 10:00"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "packageName": "NORMAL рацион",
+        "packageCalories": "1300 кКал",
+        "deliveries": [
+            {
+                "id": 4,
+                "days": 14,
+                "interval": "8:00 - 10:00"
+            },
+            {
+                "id": 5,
+                "days": 16,
+                "interval": "8:00 - 10:00"
+            },
+            {
+                "id": 6,
+                "days": 18,
+                "interval": "8:00 - 10:00"
+            },
+            {
+                "id": 7,
+                "days": 20,
+                "interval": "6:00 - 10:00"
+            },
+            {
+                "id": 8,
+                "days": 22,
+                "interval": "7:00 - 10:00"
+            },
+            {
+                "id": 9,
+                "days": 24,
+                "interval": "8:00 - 10:00"
+            }
+        ]
+    }
+]

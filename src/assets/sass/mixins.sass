@@ -1,0 +1,13 @@
+@mixin dFlex($jc: flex-start, $ai: stretch, $ac: unset)
+    display: flex
+    justify-content: $jc
+    align-items: $ai
+    align-content: $ac
+@mixin fontCfg($fz: 1em, $lh: 1em, $fw: normal, $ls: normal)
+    font-size: $fz
+    line-height: $lh
+    font-weight: $fw
+    letter-spacing: $ls
+@mixin fluidImg
+    display: block
+    width: 100%
