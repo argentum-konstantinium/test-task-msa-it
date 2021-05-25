@@ -33,7 +33,6 @@ const store = new Vuex.Store({
         }
         return order;
       });
-      console.log(state.orders)
     },
     setNewOrder: (state, paylodad) => {
       let { id, orders } = paylodad;

@@ -32,7 +32,6 @@ const routes = [
     component: Order,
     props: true,
     beforeEnter(to, from, next) {
-      console.log(store.getters.authStatus)
       if (store.getters.authStatus) {
         next();
       } else {

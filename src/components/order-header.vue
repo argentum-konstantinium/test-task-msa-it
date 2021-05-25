@@ -118,7 +118,6 @@ export default {
             const orderDeliveryDate = this.getOrderDeliveryDate();
             const day = orderDeliveryDate.getDate();
             const month = orderDeliveryDate.getMonth();
-            console.log(month);
             return `${day} ${this.getMonth(month)}`;
         },
     },
