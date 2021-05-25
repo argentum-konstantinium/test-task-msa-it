@@ -133,7 +133,7 @@ export default {
         width: 100%
         height: 100%
     &__wrapper
-        padding: 0 15px
+        
         @include dFlex(space-between, center)
     
     &:not(:last-child)
@@ -155,6 +155,10 @@ export default {
             margin-left: 1em
         &_time
             margin-right: 2.57em
+@media(min-width: 600px)
+    .delivery
+        &__wrapper
+            padding: 0 15px
 @media(min-width: 768px)
     .delivery
         &__info

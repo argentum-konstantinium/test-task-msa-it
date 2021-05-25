@@ -10,7 +10,7 @@
                 :delivery-data="delivery"
             />
         </div>
-        <div class="wrapper">
+        <div class="deliveries__wrapper">
             <div class="deliveries__footer">
                 <button
                     @click="duplicate"
