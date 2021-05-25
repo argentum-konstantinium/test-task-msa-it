@@ -145,6 +145,8 @@ export default {
             width: 100%
             bottom: 0
             left: 0
+    &__icon-wrapp
+        max-width: 29.9px
     &__icon-img
         @include fluidImg
     &__info
